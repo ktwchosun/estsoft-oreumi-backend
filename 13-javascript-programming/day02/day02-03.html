@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        for(var i = 1 ; i <= 10; i++){
+            console.log(i);
+        }
+        
+    </script>
+    <script>
+        for(var i = 1 ; i <= 20; i++){
+            if(i % 2 === 0){
+                console.log(i);
+            }
+        }
+    </script>
+    <script>
+        for(var i = 2 ; i <= 20; i += 2){
+            console.log(i);
+        }
+    </script>
+    <script>
+        var numbers = [4, 17, 32, 3, 8, 13, 41, 27, 16, 1];
+        for (var i = 0; i< numbers.length ; i++){
+            console.log('numbers[%d] = %d', i, numbers[i]);
+        }
+    </script>
+    <script>
+        // var x = 16, y = 29;
+        var x = 35, y = 17;
+        if(x > y){
+            console.log('%d - %d = %d', x, y, x - y);
+        }
+        else {
+            console.log('%d - %d = %d', y, x, y - x);
+        }
+    </script>
+    <script>
+        var kor = 88;
+        var eng = 72;
+        var math = 92;
+        var average = (kor + eng + math)/3;
+        console.log('Average: ' + average);
+        if(average >= 90){
+            console.log('Grade: A' );
+        }
+        else if(average >= 80){
+            console.log('Grade: B' );
+        }
+        else if(average >= 70){
+            console.log('Grade: C' );
+        }
+        else if(average >= 60){
+            console.log('Grade: D' );
+        }
+        else{
+            console.log('Grade: F' );
+        }
+    </script>
+    <script>
+        var num = 8;
+        for(var i = 1; i <= num ; i++) {
+            console.log(i +'. Do your best!');
+        }
+    </script>
+    <script>
+        var numbers = [4, 17, 32, 3, 8, 13, 41, 27, 16, 1];
+        for(var i = 0 ; i < numbers.length ; i++) {
+            if(numbers[i] > 15){
+                console.log(numbers[i]);
+            }
+        }
+    </script>
+    <script>
+        var numbers = [4, 17, 32, 3, 8, 13, 41, 27, 16, 1];
+        for(var i = 0 ; i < numbers.length ; i++) {
+            if(i % 2 === 1){
+                console.log(numbers[i]);
+            }
+        }
+    </script>
+    <script>
+        var favorites = ['Coffee', 'Juice', 'Coke', 'Milk', 'Tea'];
+        for(var i =0 ; i < favorites.length ; i++) {
+            if(favorites[i] === 'Coffee' || favorites[i] === 'Tea'){
+                console.log('%d. %s', i, favorites[i]);
+            }
+        }
+    </script>
+</body>
+</html>

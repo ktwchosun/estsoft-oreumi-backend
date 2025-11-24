@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>One True Layout</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+
+        #container {
+            width: 1080px;
+            margin: 0 auto;
+        }
+
+        #header > h1 {
+            padding: 0.8em 0.6em;
+            font-size: 2.4em;
+            font-weight: 900;
+            text-shadow: 4px 4px 4px rgba(0,0,0,.4);
+        }
+
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #555;
+            box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+            margin-bottom: 5px;
+        }
+
+        #nav > ul {
+            display: flex;
+        }
+
+        #nav > ul > li > a {
+            display: block;
+            padding: 1em 2em;
+
+            text-decoration: none;
+            color: white;
+
+            text-shadow: 1px 1px 2px black;
+        }
+        #nav > ul > li > a:hover {
+            background-color: black;
+        }
+
+        #wrap {
+            display: flex;
+        }
+
+        #sidebar {
+            width: 200px;
+            padding-top: 1em;
+        }
+
+        #sidebar ul > li > a {
+            display: block;
+            padding: 0.4em 1em;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #sidebar ul > li > a:hover {
+            background-color: #ccc;
+        }
+
+        #content {
+            width: 880px;
+            padding: 2em;
+            box-sizing: border-box;
+
+            border-left: 1px solid #aaa;
+        }
+
+        #content > h2 {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 0.8em;
+        }
+
+        #content p {
+            line-height: 1.5;
+            margin-top: 1em;
+        }
+
+        #footer {
+            text-align: right;
+            padding: 30px 40px 60px 0;
+            font-size: .9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body class="paper">
+
+    <div id="container">
+
+        <header id="header">
+            <h1>One-True Layout</h1>
+        </header>
+
+        <nav id="nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#html">HTML</a></li>
+                <li><a href="#css">CSS</a></li>
+                <li><a href="#javascript">JavaScript</a></li>
+                <li><a href="#jquery">jQuery</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="#login">Log in</a></li>
+                <li><a href="#signup">Sign up</a></li>
+            </ul>
+        </nav>
+
+        <div id="wrap">
+
+            <aside id="sidebar">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#html">HTML</a></li>
+                    <li><a href="#css">CSS</a></li>
+                    <li><a href="#javascript">JavaScript</a></li>
+                    <li><a href="#jquery">jQuery</a></li>
+                </ul>
+            </aside>
+
+            <main id="content">
+                <h2>Lorem ipsum dolor sit amet</h2>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consec tetur adipi scing elit.
+                    Mauris quis tris tique eros, vel plac suada erat eros.
+                    Pellen tesque habi tant morbi tris tique sene ctus et et.
+                    Male suada fames ac turpis stie hend rerit netus egestas.
+                    Vivamus aliquet cons equat dolor, vitae accum san mi amet.
+                    Suspen disse phar etra mole stie lacus vitae fer mentum.
+                    Sed effi citur condi mentum sceler inar isque egestas.
+                </p>
+
+                <p>
+                    Phasellus quis condi mentum erat, neque in vivea aliquam.
+                    Quisque eget nunc et nisi lobo rtis pellen tesque ac eu.
+                    Fusce ac odio eu risus iac ulis mole stie con vallis ac.
+                    Nullam viverra neque in aliquam tris tique cursus ipsum.
+                    Suspen disse phar etra mole stie lacus vitae fer mentum.
+                    Prae sent eu effi citur ornare mi nec elem entum ipsum.
+                    Quisque eu quam sed metus fauc ibus pellen tesque vel ut.
+                </p>
+
+                <p>
+                    Vivamus aliquet cons equat dolor, vitae accum san mi hend.
+                    Sed sed libero vel nisi maximus luctus et vel tellus.
+                    Nullam cursus justo quis diam auctor, vitae cidunt consec.
+                    Vitae cidut id ante vehi dolor, vitae acum san hend rerit.
+                    Cidunt tin cidunt ante vehi cula. Aenean quis dolor justo.
+                    Suspen disse phar etra mole stie lacus vitae fer mentum.
+                    Nam conv allis dolor vitae ult ricies rerit amet lectus.
+                </p>
+            </main>
+
+        </div>
+
+        <footer id="footer">
+            &copy; 2016-2024 Cheonha University.
+        </footer>
+
+    </div>
+
+</body>
+</html>
