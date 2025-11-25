@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Example</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        const rect = {
+
+            width: 13,
+            height: 8,
+
+            getArea: function() {
+                return this.width * this.height;
+            }
+        };
+        console.log('rect.area = ' + rect.getArea());
+
+    </script>
+    <script>
+        window.setTimeout(function(){
+            console.log('Pay attention!');
+        },3000);
+            
+    </script>
+    <script>
+        let i = 1;
+        window.setInterval(function(){
+            console.log('i = ' + i++);
+        },2000);
+    </script>
+</body>
+</html>

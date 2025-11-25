@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Pratice-02</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+</head>
+<body>
+    <script>
+
+        const INTERVAL = 2000;
+        const colors = ['red','green','blue'];
+
+        let i = 0;
+
+        window.setInterval(function(){
+            console.log('background-color: %s;',colors[i]);
+            i++;
+            // if(i === colors.length){
+            //     i = 0;
+            // }
+            i %= colors.length;
+            
+        },INTERVAL);
+
+    </script>
+
+
+</body>
+</html>

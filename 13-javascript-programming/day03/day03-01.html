@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Example</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+<body>
+    <script>
+        console.group('Ex-01')
+        function printName() {
+        console.log('jeongin');
+        console.groupEnd();
+    }
+    </script>
+    <script>
+        console.group('Ex-02')
+
+        function greeting(name) {
+            console.log(`Hi,${name}.Nice to meet you!`);
+        }
+        greeting('Harry');
+
+        console.groupEnd();
+    </script>
+    <script>
+        
+
+        function getAverage(n1, n2) {
+            return (n1 + n2) / 2;
+            
+        }
+
+        var n1 = 31;
+        var n2 = 17;
+
+        console.group('Ex-03')
+        console.log('The average of %d and %d = %d', n1, n2, getAverage(n1, n2));
+
+        console.groupEnd();
+    </script>
+</body>
+</html>

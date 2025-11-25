@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Pratice-01</title>
+    <link rel="stylesheet" href="../reset.css">
+</head>
+</head>
+<body>
+    <script>
+        const message = [
+            'Time is gold.',
+            'No sweat, no sweet.',
+            'Asking costs nothing',
+            'Step by step goes a long way.',
+            'You will never know until you try.'
+        ];
+
+        let i = 0;
+        const INTERVAL = 2000;
+
+        const timerId = window.setInterval(function(){
+            console.log('%d. %s', i + 1, message[i]);
+            i++;
+
+            if (i === message.length){
+                window.clearInterval(timerId);
+            }
+
+        },INTERVAL);
+
+        // window.setTimeout(function(){
+        //     window.clearInterval(timerId);
+        // },INTERVAL*message.length);
+
+    </script>
+
+
+</body>
+</html>
