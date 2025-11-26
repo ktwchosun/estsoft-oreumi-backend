@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        #box { width: 200px; height: 200px; background-color: blue;}
+    </style>
+</head>
+<body>
+    <h1 id="hello">Hello World!</h1>
+    <a href="https://www.google.com" id="search">Search engine</a>
+    <script>
+        const search = document.getElementById('search');
+
+        search.setAttribute('href','https://www.naver.com');
+
+        // search.href = 'https://www.naver.com'; 
+    </script>
+    <h1 id="time">Time is gold.</h1>
+    <script>
+
+        window.setTimeout(function(){
+            document.getElementById('time').style.display = 'none';
+        },3000);
+    </script>
+
+    <h2 class="words">Time is gold.</h2>
+    <h2 class="words">No sweat, no sweet.</h2>
+    <h2 class="words">Asking costs nothing.</h2>
+
+    <script>
+        const words = document.getElementsByClassName('words');
+
+        // for (const element of words) {
+        //     element.style.color = 'red';
+        // }
+
+        for ( let i = 0 ; i < words.length ; i++){
+            words[i].style.color = 'red';
+        }
+
+    </script>
+    <ul id="list">
+        <li><a href="http://www.google.com">Google</a></li>
+        <li><a href="http://www.naver.com">Naver</a></li>
+        <li><a href="http://www.daum.net">Daum</a></li>
+    </ul>
+    <script>
+        const links = document.querySelectorAll('#list > li > a');
+
+        /*
+        for ( let i = 0 ; i < links.length ; i++){
+            // const href = links[i].getAttribute('href');
+            const href = links[i].href;
+
+            links[i].innerHTML += ` (${href})`;
+        }
+        */
+
+        for (const element of links) {
+            const href = element.href;
+            element.innerHTML += ` (${href})`;
+        }
+    </script>
+    <h1 id="best">DO YOUR BEST!</h1>
+    <script>
+        const best = document.getElementById('best');
+        const colors = ['red', 'blue', 'green','gold'];
+        let i = 0;
+
+        window.setInterval(function(){ 
+            best.style.color = colors[i];
+            i++;
+            // if(i === colors.length) i = 0;
+            i %= colors.length;
+        },2000);
+    </script>
+    <div id="box"></div>
+    <script>
+        let j = 1;
+        const box = document.getElementById('box');
+        const timerId = window.setInterval(function(){
+            box.style.marginLeft = (j * 200)  + 'px';
+            j++;
+
+            if(j === 4) window.clearInterval(timerId);
+        },2000);
+    </script>
+    
+</body>
+</html>
