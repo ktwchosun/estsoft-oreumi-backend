@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise</title>
+    <link rel="stylesheet" href="../../13-javascript-programming/reset.css">
+    <style>
+        #form {
+            margin-bottom: 2em;
+        }
+        #form > p:not(:last-child) {
+            margin-bottom: 0.6em;
+        }
+
+        #form > p > label:first-child {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+
+        #form > p > input[type="submit"] {
+            display: block;
+            width: 350px;
+            padding: 0.4em 0;
+        }
+
+        #log {
+            line-height: 1.8;;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('form').addEventListener('submit', function(event){
+                event.preventDefault();
+
+                const name = this.name.value;
+                const gender = this.gender.value === 'male' ? '남자' : '여자';
+                const age = this.age.value;
+
+                document.getElementById('log').innerHTML = `반갑습니다 , ${name} 님.<br>
+                    ${name} 님은 ${age} ${gender}입니다.`;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="/server/program" method="post" id="form">
+        <p>
+            <label>이름: </label>
+            <input type="text" name="name" autocomplete="off">
+        </p>
+        <p>
+            <label>성별: </label>
+            <label><input type="radio" name="gender" value="male"> 남자</label>
+            <label><input type="radio" name="gender" value="female"> 여자</label>
+        </p>
+        <P>
+            <label>연령대: </label>
+            <select name="age">
+                <option value="10대">10대</option>
+                <option value="20대">20대</option>
+                <option value="30대">30대</option>
+                <option value="40대">40대</option>
+                <option value="50대">50대</option>
+            </select>
+        </P>
+        <p>
+            <input type="submit" name="confirm" value="확인">
+        </p>
+        <div id="log"></div>
+
+
+
+    </form>
+
+</body>
+</html>
