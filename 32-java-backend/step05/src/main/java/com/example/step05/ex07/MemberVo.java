@@ -1,4 +1,4 @@
-package com.example.step05.ex06;
+package com.example.step05.ex07;
 
 import java.sql.Date;
 

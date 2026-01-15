@@ -1,4 +1,4 @@
-package com.example.step05.ex06;
+package com.example.step05.ex07;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -202,6 +202,26 @@ public class MemberDao {
     }
 
     /**
+     * ResultSet 인스턴스를 확인해서 boolean 값을 반환
+     *
+     * @return 첫 번째 레코드의 result 컬럼이 "true"이면 true, "false"이면 false를 반환
+     */
+    private boolean getBooleanFromResultSet() throws SQLException {
+        // ResultSet 인스턴스를 확인해서 반환할 값
+        boolean result = false;
+
+        // ResultSet 인스턴스의 커서를 첫 번째 레코드로 이동
+        if (resultSet.first()) {
+            // 첫 번째 레코드의 첫 번째 컬럼을 boolean 자료형으로 변환
+            result = Boolean.parseBoolean(resultSet.getString("result"));
+            System.out.println("RESULT: " + result);
+        }
+
+        // 확인할 결과를 반환
+        return result;
+    }
+
+    /**
      * members 테이블의 모든 레코드를 조회
      *
      * @return 조회한 레코드의 목록
@@ -318,12 +338,8 @@ WHERE username = ? AND password = ?
             // SQL 문을 실행하고, 실행 결과를 ResultSet 인스턴스에 저장
             executeQuery();
 
-            // ResultSet 인스턴스의 커서를 첫 번째 레코드로 이동
-            if (resultSet.first()) {
-                // 첫 번째 레코드의 첫 번째 컬럼을 boolean 자료형으로 변환
-                result = Boolean.parseBoolean(resultSet.getString("result"));
-                System.out.println("RESULT: " + result);
-            }
+            // 첫 번째 레코드의 result 컬럼을 확인해서 members 테이블에 회원 정보가 있는지 확인
+            result = getBooleanFromResultSet();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -404,5 +420,69 @@ WHERE username = ? AND password = ?
 
         // 회원 목록을 반환
         return memberList;
+    }
+
+    /**
+     * members 테이블에서 주어진 username 정보를 갖는 회원 정보가 있는지 확인
+     *
+     * @param username 확인하고자 하는 회원의 username 정보
+     * @return 존재하는지 여부
+     */
+    public boolean isExistUsername(String username) {
+        // 회원 정보가 있는지 나타내는 상태 변수
+        boolean result = false;
+
+        try {
+            // members 테이블에서 username 정보로 회원 정보가 있는지 확인하는 SQL 문
+            String query = "SELECT DECODE(COUNT(*), 1, 'true', 'false') AS result " +
+                    "FROM members WHERE username = ?";
+
+            // PreparedStatement 인스턴스 생성
+            prepareStatement(query);
+
+            // SQL 문의 지정한 위치에 값을 치환
+            preparedStatement.setString(1, username);
+
+            // SQL 문을 실행하고, 실행 결과를 ResultSet 인스턴스에 저장
+            executeQuery();
+
+            // 첫 번째 레코드의 result 컬럼을 확인해서 members 테이블에 회원 정보가 있는지 확인
+            result = getBooleanFromResultSet();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            closeConnection();
+        }
+
+        // 회원 정보가 있는지 여부를 반환
+        return result;
+    }
+
+    /**
+     * members 테이블에서 주어진 username 정보를 갖는 레코드를 갱신
+     *
+     * @param memberVo 갱신할 회원 정보
+     */
+    public void updateMember(MemberVo memberVo) {
+        try {
+            // members 테이블에서 주어진 username 정보를 갖는 레코드를 갱신하는 SQL 문
+            String query = "UPDATE members SET password = ?, name = ?, email = ? WHERE username = ?";
+
+            // PreparedStatement 인스턴스 생성
+            prepareStatement(query);
+
+            // SQL 문의 지정한 위치에 값을 치환
+            preparedStatement.setString(1, memberVo.getPassword());
+            preparedStatement.setString(2, memberVo.getName());
+            preparedStatement.setString(3, memberVo.getEmail());
+            preparedStatement.setString(4, memberVo.getUsername());
+
+            // SQL 문을 실행
+            executeUpdate();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            closeConnection();
+        }
     }
 }

@@ -1,8 +1,14 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<jsp:useBean id="action" type="java.lang.String" scope="request" />
+<jsp:useBean id="memberVo" class="com.example.step05.ex07.MemberVo" scope="request" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Membership Registration Form</title>
+    <title>Membership Form</title>
     <style>
         #memberForm > p > label > span {
             display: inline-block;
@@ -29,31 +35,44 @@
 </head>
 <body>
 
-<h1>Membership Registration Form</h1>
+<h1>Membership Form</h1>
 
-<form action="member.jsp" method="post" id="memberForm">
+<form action="${contextPath}/member/${action}" method="post" id="memberForm">
+    <c:choose>
+        <c:when test="${action == 'update'}">
+            <input type="hidden" name="id" value="${memberVo.id}">
+            <input type="hidden" name="username" value="${memberVo.username}">
+            <p>
+                <label>
+                    <span>Username: </span>${memberVo.username}
+                </label>
+            </p>
+        </c:when>
+        <c:otherwise>
+            <p>
+                <label>
+                    <span>Username: </span><input type="text" name="username" required>
+                </label>
+            </p>
+        </c:otherwise>
+    </c:choose>
     <p>
         <label>
-            <span>Username: </span><input type="text" name="username" required>
+            <span>Password: </span><input type="password" name="password" value="${memberVo.password}" required>
         </label>
     </p>
     <p>
         <label>
-            <span>Password: </span><input type="password" name="password" required>
+            <span>Name: </span><input type="text" name="name" value="${memberVo.name}" required>
         </label>
     </p>
     <p>
         <label>
-            <span>Name: </span><input type="text" name="name" required>
+            <span>Email: </span><input type="text" name="email" value="${memberVo.email}" required>
         </label>
     </p>
     <p>
-        <label>
-            <span>Email: </span><input type="text" name="email" required>
-        </label>
-    </p>
-    <p>
-        <input type="submit" value="Register">
+        <input type="submit" value="${fn:toUpperCase(action)}">
     </p>
 </form>
 
