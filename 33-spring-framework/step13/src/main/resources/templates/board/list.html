@@ -31,7 +31,8 @@
 
 <table border="1" id="list">
     <caption th:object="${pagination}">
-        <span th:text="*{pageNumber}"></span> / <span th:text="*{lastPage}"></span>
+        <span th:text="*{pageNumber}"></span> /
+        <span th:text="*{lastPage}"></span>
     </caption>
     <thead>
     <tr>
@@ -45,7 +46,10 @@
     <tbody>
     <tr th:each="postDto : ${postDtoList}" th:object="${postDto}">
         <td th:text="*{id}"></td>
-        <td><a th:href="@{read(id=*{id}, page=${pagination.pageNumber})}" th:text="*{title}"></a></td>
+        <td>
+            <a th:href="@{read(id=${id}, page=${pagination.pageNumber})}"
+               th:text="*{title}"></a>
+        </td>
         <td th:text="*{writer}"></td>
         <td th:text="*{#temporals.format(createdAt, 'yyyy-MM-dd HH:mm')}"></td>
         <td th:text="*{#temporals.format(updatedAt, 'yyyy-MM-dd HH:mm')}"></td>
@@ -54,14 +58,30 @@
 </table>
 
 <ol id="pagination" th:object="${pagination}">
-    <li th:if="*{startPage} != 1"><a th:href="@{list(page=1)}">First</a></li>
-    <li th:if="*{prev}"><a th:href="@{list(page=*{startPage} - 1)}">Prev</a></li>
+    <li th:if="*{startPage != 1}">
+        <a th:href="@{list(page=1)}">First</a>
+    </li>
+
+    <li th:if="*{prev}">
+        <a th:href="@{list(page=${startPage - 1})}">Prev</a>
+    </li>
+
     <th:block th:each="page : *{#numbers.sequence(startPage, endPage)}">
-        <li th:if="${page} == *{pageNumber}"><span th:text="${page}"></span></li>
-        <li th:unless="${page} == *{pageNumber}"><a th:href="@{list(page=${page})}" th:text="${page}"></a></li>
+        <li th:if="${page == pagination.pageNumber}">
+            <span th:text="${page}"></span>
+        </li>
+        <li th:unless="${page == pagination.pageNumber}">
+            <a th:href="@{list(page=${page})}" th:text="${page}"></a>
+        </li>
     </th:block>
-    <li th:if="*{next}"><a th:href="@{list(page=*{endPage} + 1)}">Next</a></li>
-    <li th:if="*{endPage} != *{lastPage}"><a th:href="@{list(page=*{lastPage})}">Last</a></li>
+
+    <li th:if="*{next}">
+        <a th:href="@{list(page=${endPage + 1})}">Next</a>
+    </li>
+
+    <li th:if="*{endPage != lastPage}">
+        <a th:href="@{list(page=${lastPage})}">Last</a>
+    </li>
 </ol>
 
 <p>
